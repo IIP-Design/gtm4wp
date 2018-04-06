@@ -220,8 +220,18 @@ function gtm4wp_add_basic_datalayer_data( $dataLayer ) {
 			}
 		}
 
-		if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHORID ] || $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHOR ] ) {
-			$postuser = get_userdata( $GLOBALS['post']->post_author );
+    if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_CUSTOM_TAX ] ) {
+			$_post_cust_tax = get_the_terms($GLOBALS["post"], "series");
+			if ( $_post_cust_tax ) {
+				$dataLayer["pageCustomTaxonomy"] = array();
+				foreach( $_post_cust_tax as $_one_tax ) {
+					$dataLayer["pageCustomTaxonomy"][] = $_one_tax->slug;
+				}
+			}
+    }
+
+    if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHORID ] || $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHOR ] ) {
+			$postuser = get_userdata( $GLOBALS["post"]->post_author );
 
 			if ( false !== $postuser ) {
 				if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHORID ] ) {
@@ -1026,7 +1036,7 @@ if ( isset( $GLOBALS['gtm4wp_options'] ) && ( $GLOBALS['gtm4wp_options'][ GTM4WP
 	add_action( 'wp_enqueue_scripts', 'gtm4wp_user_reg_login_script' );
 }
 
-if ( isset( $GLOBALS['gtm4wp_options'] ) && ( $GLOBALS['gtm4wp_options'][ GTM4WP_OPTION_EVENTS_NEWUSERREG ] ) ) {
-	add_action( 'user_register', 'gtm4wp_user_register' );
-	add_action( 'wp_enqueue_scripts', 'gtm4wp_user_reg_login_script' );
+if ( isset( $GLOBALS[ "gtm4wp_options" ] ) && ( $GLOBALS[ "gtm4wp_options" ][ GTM4WP_OPTION_EVENTS_NEWUSERREG ] ) ) {
+	add_action( "user_register", "gtm4wp_user_register" );
+	add_action( "wp_enqueue_scripts", "gtm4wp_user_reg_login_script" );
 }

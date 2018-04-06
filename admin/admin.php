@@ -31,152 +31,143 @@ $GLOBALS['gtm4wp_def_user_notices_dismisses'] = array(
 	'deprecated-warning'        => false,
 );
 
-$GLOBALS['gtm4wp_includefieldtexts'] = array(
-	GTM4WP_OPTION_INCLUDE_POSTTYPE      => array(
-		'label'       => __( 'Posttype of current post/archive', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the type of the current post or archive page (post, page or any custom post type).', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_CATEGORIES    => array(
-		'label'       => __( 'Category list of current post/archive', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the category names of the current post or archive page', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_TAGS          => array(
-		'label'       => __( 'Tags of current post', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the tags of the current post.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_AUTHORID      => array(
-		'label'       => __( 'Post author ID', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the ID of the author on the current post or author page.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_AUTHOR        => array(
-		'label'       => __( 'Post author name', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the name of the author on the current post or author page.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_POSTDATE      => array(
-		'label'       => __( 'Post date', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the date of the current post. This will include 4 dataLayer variables: full date, post year, post month, post date.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_POSTTITLE     => array(
-		'label'       => __( 'Post title', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the title of the current post.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_POSTCOUNT     => array(
-		'label'       => __( 'Post count', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the count of the posts currently shown on the page and the total number of posts in the category/tag/any taxonomy.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_POSTID        => array(
-		'label'       => __( 'Post ID', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the post id.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_POSTFORMAT    => array(
-		'label'       => __( 'Post Format', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the post format.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
-	),
-	GTM4WP_OPTION_INCLUDE_POSTTERMLIST  => array(
-		"label"       => __( "Post Terms", 'duracelltomi-google-tag-manager' ),
-		"description" => __( "Check this option to include taxonomy values associated with a given post.", 'duracelltomi-google-tag-manager' ),
+$GLOBALS["gtm4wp_includefieldtexts"] = array(
+	GTM4WP_OPTION_INCLUDE_POSTTYPE    => array(
+		"label"       => __( "Posttype of current post/archive", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the type of the current post or archive page (post, page or any custom post type).", 'duracelltomi-google-tag-manager' ),
 		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_SEARCHDATA    => array(
-		'label'       => __( 'Search data', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the search term, referring page URL and number of results on the search page.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_CATEGORIES  => array(
+		"label"       => __( "Category list of current post/archive", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the category names of the current post or archive page", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_LOGGEDIN      => array(
-		'label'       => __( 'Logged in status', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include whether there is a logged in user on your website.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_TAGS        => array(
+		"label"       => __( "Tags of current post", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the tags of the current post.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
+  ),
+  GTM4WP_OPTION_INCLUDE_CUSTOM_TAX        => array(
+		"label"       => __( "Custom taxonomies of current post", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the custom taxonomies applied to the current post.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_USERROLE      => array(
-		'label'       => __( 'Logged in user role', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the role of the logged in user.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_AUTHORID    => array(
+		"label"       => __( "Post author ID", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the ID of the author on the current post or author page.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_USERID        => array(
-		'label'       => __( 'Logged in user ID', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the ID of the logged in user.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_AUTHOR      => array(
+		"label"       => __( "Post author name", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the name of the author on the current post or author page.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_USERNAME      => array(
-		'label'       => __( 'Logged in user name', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the username of the logged in user.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_POSTDATE    => array(
+		"label"       => __( "Post date", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the date of the current post. This will include 4 dataLayer variables: full date, post year, post month, post date.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_USEREMAIL     => array(
-		'label'       => __( 'Logged in user email', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the email address of the logged in user.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_POSTTITLE   => array(
+		"label"       => __( "Post title", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the title of the current post.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_USERREGDATE   => array(
-		'label'       => __( 'Logged in user creation date', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the date of creation (registration) of the logged in user.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_POSTCOUNT   => array(
+		"label"       => __( "Post count", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the count of the posts currently shown on the page and the total number of posts in the category/tag/any taxonomy.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_VISITOR_IP    => array(
-		'label'       => __( 'Visitor IP', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the IP address of the visitor. You might use this to filter internal traffic inside your GTM container. Please be aware that per GDPR its not allowed to transmit this full IP address to Google Analytics or to any other measurement system without explicit consent from the visitor.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_POSTID   => array(
+		"label"       => __( "Post ID", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the post id.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_REMARKETING   => array(
-		'label'       => __( 'Remarketing variable', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include a dataLayer variable where all dataLayer values are stored to be included in your Google Ads remarketing tag as a custom variable field', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_STABLE,
+	GTM4WP_OPTION_INCLUDE_POSTFORMAT => array(
+		"label"       => __( "Post Format", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the post format.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_BROWSERDATA   => array(
-		'label'       => __( 'Browser data *', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the name, version and engine data of the browser the visitor uses.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_BETA,
+	GTM4WP_OPTION_INCLUDE_SEARCHDATA  => array(
+		"label"       => __( "Search data", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the search term, referring page URL and number of results on the search page.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_OSDATA        => array(
-		'label'       => __( 'OS data *', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the name and version of the operating system the visitor uses.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_BETA,
+	GTM4WP_OPTION_INCLUDE_LOGGEDIN    => array(
+		"label"       => __( "Logged in status", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include whether there is a logged in user on your website.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_DEVICEDATA    => array(
-		'label'       => __( 'Device data *', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Check this option to include the type of device the user is currently using (desktop, tablet or mobile) including manufacturer and model data.', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_BETA,
+	GTM4WP_OPTION_INCLUDE_USERROLE    => array(
+		"label"       => __( "Logged in user role", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the role of the logged in user.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_MISCGEO       => array(
-		'label'       => __( 'Geo data', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Add geo data (latitude, longitude, country, city, etc) of the current visitor (provided by ipstack.com)', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_EXPERIMENTAL,
+	GTM4WP_OPTION_INCLUDE_USERID      => array(
+		"label"       => __( "Logged in user ID", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the ID of the logged in user.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_MISCGEOAPI    => array(
-		'label'       => __( 'IPStack.com API key', 'duracelltomi-google-tag-manager' ),
-		'description' => sprintf( __( 'Enter your IPStack.com API key here. <a href="%s" target="_blank">Get a free API key here</a>.', 'duracelltomi-google-tag-manager' ), 'https://ipstack.com/product?utm_source=gtm4wp&utm_medium=link&utm_campaign=gtm4wp-google-tag-manager-for-wordpress' ),
-		'phase'       => GTM4WP_PHASE_EXPERIMENTAL,
+	GTM4WP_OPTION_INCLUDE_USERNAME   => array(
+		"label"       => __( "Logged in user name", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the username of the logged in user.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_MISCGEOCF     => array(
-		'label'       => __( 'Cloudflare country code', 'duracelltomi-google-tag-manager' ),
-		'description' => __( 'Add the country code of the user provided by Cloudflare (if Cloudflare is used with your site)', 'duracelltomi-google-tag-manager' ),
-		'phase'       => GTM4WP_PHASE_EXPERIMENTAL,
+	GTM4WP_OPTION_INCLUDE_USEREMAIL   => array(
+		"label"       => __( "Logged in user email", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the email address of the logged in user.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
-	GTM4WP_OPTION_INCLUDE_WEATHER       => array(
-		'label'       => __( 'Weather data', 'duracelltomi-google-tag-manager' ),
-		'description' => sprintf(
-			__(
-				'Check this option to include the current weather conditions around the current visitor.<br /><br />' .
-				'<strong>Attention!</strong> This feature uses <a href="%s" target="_blank">ipstack.com</a> and ' .
-				'<a href="%s" target="_blank">openweathermap.org</a> to collect data.<br />' .
-				"Depending on your website's traffic, additional fees may apply!<br />" .
-				'This plugin caches weather data for 1 hour to lower the need to access those services.<br /><br />' .
-				'If you activate weather data, <strong>you will need</strong> to add an IPStack.com API key regardless of whether you ' .
-				"activate the 'Geo data' option!",
-				'duracelltomi-google-tag-manager'
-			),
-			'https://ipstack.com/product?utm_source=gtm4wp&utm_medium=link&utm_campaign=gtm4wp-google-tag-manager-for-wordpress',
-			'http://openweathermap.org/price?utm_source=gtm4wp&utm_medium=link&utm_campaign=gtm4wp-google-tag-manager-for-wordpress'
+	GTM4WP_OPTION_INCLUDE_USERREGDATE => array(
+		"label"       => __( "Logged in user creation date", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the date of creation (registration) of the logged in user.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
+	),
+	GTM4WP_OPTION_INCLUDE_VISITOR_IP => array(
+		"label"       => __( "Visitor IP", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the IP address of the visitor. You might use this to filter internal traffic inside your GTM container. Please be aware that per GDPR its not allowed to transmit this full IP address to Google Analytics or to any other measurement system without explicit consent from the visitor.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
+	),
+	GTM4WP_OPTION_INCLUDE_REMARKETING => array(
+		"label"       => __( "Remarketing variable", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include a dataLayer variable where all dataLayer values are stored to be included in your AdWords remarketing tag as a custom variable field", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
+	),
+	GTM4WP_OPTION_INCLUDE_BROWSERDATA => array(
+		"label"       => __( "Browser data *", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the name, version and engine data of the browser the visitor uses.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_BETA
+	),
+	GTM4WP_OPTION_INCLUDE_OSDATA => array(
+		"label"       => __( "OS data *", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the name and version of the operating system the visitor uses.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_BETA
+	),
+	GTM4WP_OPTION_INCLUDE_DEVICEDATA  => array(
+		"label"       => __( "Device data *", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the type of device the user is currently using (desktop, tablet or mobile) including manufacturer and model data.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_BETA
+	),
+	GTM4WP_OPTION_INCLUDE_MISCGEO => array(
+		"label"       => __( "Geo data", 'duracelltomi-google-tag-manager' ),
+		"description" => __( 'Add geo data (latitude, longitude, country, city, etc) of the current visitor (provided by ipstack.com)', 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_EXPERIMENTAL
+	),
+	GTM4WP_OPTION_INCLUDE_MISCGEOAPI => array(
+		"label"       => __( "IPStack.com API key", 'duracelltomi-google-tag-manager' ),
+		"description" => sprintf( __( 'Enter your IPStack.com API key here. <a href="%s" target="_blank">Get a free API key here</a>.', 'duracelltomi-google-tag-manager' ), "https://ipstack.com/product?utm_source=gtm4wp&utm_medium=link&utm_campaign=gtm4wp-google-tag-manager-for-wordpress" ),
+		"phase"       => GTM4WP_PHASE_EXPERIMENTAL
+	),
+	GTM4WP_OPTION_INCLUDE_WEATHER => array(
+		"label"       => __( "Weather data", 'duracelltomi-google-tag-manager' ),
+		"description" => sprintf( __( "Check this option to include the current weather conditions around the current visitor.<br /><br />".
+		                              "<strong>Attention!</strong> This feature uses <a href=\"%s\" target=\"_blank\">ipstack.com</a> and ".
+		                              "<a href=\"%s\" target=\"_blank\">openweathermap.org</a> to collect data.<br />".
+		                              "Depending on your website's traffic, additional fees may apply!<br />".
+		                              "This plugin caches weather data for 1 hour to lower the need to access those services.<br /><br />".
+		                              "If you activate weather data, <strong>you will need</strong> to add an IPStack.com API key regardless of whether you ".
+		                              "activate the 'Geo data' option!", 'duracelltomi-google-tag-manager' ),
+		                              "https://ipstack.com/product?utm_source=gtm4wp&utm_medium=link&utm_campaign=gtm4wp-google-tag-manager-for-wordpress",
+		                              "http://openweathermap.org/price?utm_source=gtm4wp&utm_medium=link&utm_campaign=gtm4wp-google-tag-manager-for-wordpress"
 		),
 		'phase'       => GTM4WP_PHASE_EXPERIMENTAL,
 	),
