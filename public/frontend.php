@@ -225,11 +225,10 @@ function gtm4wp_add_basic_datalayer_data( $dataLayer ) {
     if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_CUSTOM_TAX ] ) {
 			$_post_cust_tax = get_the_terms($GLOBALS["post"], "series");
 			if ( $_post_cust_tax ) {
-				$cust_tax_array = array();
+				$dataLayer["pageCustomTaxonomy"] = array();
 				foreach( $_post_cust_tax as $_one_tax ) {
-					$cust_tax_array[] = $_one_tax->slug;
-        }
-        $dataLayer["pageCustomTaxonomy"] = implode( " | ", $cust_tax_array );
+					$dataLayer["pageCustomTaxonomy"][] = $_one_tax->slug;
+				}
 			}
     }
 
