@@ -164,7 +164,17 @@ function gtm4wp_add_basic_datalayer_data( $dataLayer ) {
 			}
 		}
 
-		if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHORID ] || $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHOR ] ) {
+    if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_CUSTOM_TAX ] ) {
+			$_post_cust_tax = get_the_terms($GLOBALS["post"], "series");
+			if ( $_post_cust_tax ) {
+				$dataLayer["pageCustomTaxonomy"] = array();
+				foreach( $_post_cust_tax as $_one_tax ) {
+					$dataLayer["pageCustomTaxonomy"][] = $_one_tax->slug;
+				}
+			}
+    }
+
+    if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHORID ] || $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_AUTHOR ] ) {
 			$postuser = get_userdata( $GLOBALS["post"]->post_author );
 
 			if ( false !== $postuser ) {

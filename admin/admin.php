@@ -46,6 +46,11 @@ $GLOBALS["gtm4wp_includefieldtexts"] = array(
 		"label"       => __( "Tags of current post", 'duracelltomi-google-tag-manager' ),
 		"description" => __( "Check this option to include the tags of the current post.", 'duracelltomi-google-tag-manager' ),
 		"phase"       => GTM4WP_PHASE_STABLE
+  ),
+  GTM4WP_OPTION_INCLUDE_CUSTOM_TAX        => array(
+		"label"       => __( "Custom taxonomies of current post", 'duracelltomi-google-tag-manager' ),
+		"description" => __( "Check this option to include the custom taxonomies applied to the current post.", 'duracelltomi-google-tag-manager' ),
+		"phase"       => GTM4WP_PHASE_STABLE
 	),
 	GTM4WP_OPTION_INCLUDE_AUTHORID    => array(
 		"label"       => __( "Post author ID", 'duracelltomi-google-tag-manager' ),
