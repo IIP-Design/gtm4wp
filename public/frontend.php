@@ -147,30 +147,33 @@ function gtm4wp_add_basic_datalayer_data( $dataLayer ) {
 		if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_CATEGORIES ] ) {
 			$_post_cats = get_the_category();
 			if ( $_post_cats ) {
-				$dataLayer["pageCategory"] = array();
+				$cats_array = array();
 				foreach( $_post_cats as $_one_cat ) {
-					$dataLayer["pageCategory"][] = $_one_cat->slug;
-				}
+					$cats_array[] = $_one_cat->slug;
+        }
+        $dataLayer["pageCategory"] = implode( " | ", $cats_array );
 			}
 		}
 
 		if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_TAGS ] ) {
 			$_post_tags = get_the_tags();
 			if ( $_post_tags ) {
-				$dataLayer["pageAttributes"] = array();
+				$tags_array = array();
 				foreach( $_post_tags as $_one_tag ) {
-					$dataLayer["pageAttributes"][] = $_one_tag->slug;
-				}
+					$tags_array[] = $_one_tag->slug;
+        }
+        $dataLayer["pageAttributes"] = implode( " | ", $tags_array );
 			}
 		}
 
     if ( $gtm4wp_options[ GTM4WP_OPTION_INCLUDE_CUSTOM_TAX ] ) {
 			$_post_cust_tax = get_the_terms($GLOBALS["post"], "series");
 			if ( $_post_cust_tax ) {
-				$dataLayer["pageCustomTaxonomy"] = array();
+				$cust_tax_array = array();
 				foreach( $_post_cust_tax as $_one_tax ) {
-					$dataLayer["pageCustomTaxonomy"][] = $_one_tax->slug;
-				}
+					$cust_tax_array[] = $_one_tax->slug;
+        }
+        $dataLayer["pageCustomTaxonomy"] = implode( " | ", $cust_tax_array );
 			}
     }
 
