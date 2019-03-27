@@ -1,5 +1,5 @@
 {
-    "name": "iip-design/gtm4wp",
+    "name": "iip-design/duracelltomi-google-tag-manager",
     "type": "wordpress-plugin",
     "description" : "Add multilingual support for Media files",
     "minimum-stability": "stable",
