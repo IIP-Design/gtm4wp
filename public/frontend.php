@@ -553,7 +553,7 @@ function gtm4wp_add_basic_datalayer_data( $dataLayer ) {
 					$dataLayer['weatherTemp']            = $weatherdata->main->temp;
 					$dataLayer['weatherPressure']        = $weatherdata->main->pressure;
 					$dataLayer['weatherWindSpeed']       = $weatherdata->wind->speed;
-					$dataLayer['weatherWindDeg']         = ( $weatherdata->wind->deg ? $weatherdata->wind->deg : '' );
+					$dataLayer['weatherWindDeg']         = ( isset($weatherdata->wind->deg) ? $weatherdata->wind->deg : '' );
 					$dataLayer['weatherFullWeatherData'] = $weatherdata;
 					$dataLayer['weatherDataStatus']      = 'Read from cache';
 				} else {
@@ -613,7 +613,7 @@ function gtm4wp_wp_loaded() {
 								set_transient( 'gtm4wp-weatherdata-' . esc_attr( $client_ip ), $weatherdata, 60 * 60 );
 								setcookie( 'gtm4wp_last_weatherstatus', 'Weather data loaded.' );
 							} else {
-								setcookie( 'gtm4wp_last_weatherstatus', 'Openweathermap.org did not return processable data: ' . var_dump( $weatherdata, true ) );
+								setcookie( 'gtm4wp_last_weatherstatus', 'Openweathermap.org did not return processable data: ' . var_export( $weatherdata, true ) );
 							}
 						} else {
 							if ( is_wp_error( $weatherdata ) ) {
@@ -624,7 +624,7 @@ function gtm4wp_wp_loaded() {
 						}
 					}
 				} else {
-					setcookie( 'gtm4wp_last_weatherstatus', 'ipstack.com did not return lat-lng data: ' . var_dump( $gtm4wp_geodata, true ) );
+					setcookie( 'gtm4wp_last_weatherstatus', 'ipstack.com did not return lat-lng data: ' . var_export( $gtm4wp_geodata, true ) );
 				}
 			} else {
 				if ( is_wp_error( $gtm4wp_geodata ) ) {
@@ -773,9 +773,11 @@ function gtm4wp_add_global_vars( $vars, $return = false ) {
 function gtm4wp_wp_header_top( $echo = true ) {
 	global $gtm4wp_options, $gtm4wp_datalayer_name;
 
+	$has_html5_support = current_theme_supports( 'html5' );
+
 	$_gtm_top_content = '
 <!-- Google Tag Manager for WordPress by gtm4wp.com -->
-<script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">//<![CDATA[
+<script data-cfasync="false" data-pagespeed-no-defer' . ( $has_html5_support ? ' type="text/javascript"' : '' ) . '>//<![CDATA[
 	var gtm4wp_datalayer_name = "' . $gtm4wp_datalayer_name . '";
 	var ' . $gtm4wp_datalayer_name . ' = ' . $gtm4wp_datalayer_name . ' || [];';
 
@@ -809,9 +811,11 @@ function gtm4wp_wp_header_top( $echo = true ) {
 function gtm4wp_wp_header_begin( $echo = true ) {
 	global $gtm4wp_datalayer_name, $gtm4wp_datalayer_json, $gtm4wp_options, $woocommerce;
 
+	$has_html5_support = current_theme_supports( 'html5' );
+
 	$_gtm_header_content = '
 <!-- Google Tag Manager for WordPress by gtm4wp.com -->
-<script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">//<![CDATA[';
+<script data-cfasync="false" data-pagespeed-no-defer' . ( $has_html5_support ? ' type="text/javascript"' : '' ) . '>//<![CDATA[';
 
 	if ( $gtm4wp_options[ GTM4WP_OPTION_GTM_CODE ] != '' ) {
 		$gtm4wp_datalayer_data = array();
@@ -860,10 +864,15 @@ function gtm4wp_wp_header_begin( $echo = true ) {
 	if ( dataLayer_content.transactionId || ( dataLayer_content.ecommerce && dataLayer_content.ecommerce.purchase ) ) {
 		// read order id already tracked from cookies
 		var gtm4wp_orderid_tracked = "";
-		var gtm4wp_cookie = "; " + document.cookie;
-		var gtm4wp_cookie_parts = gtm4wp_cookie.split( "; gtm4wp_orderid_tracked=" );
-		if ( gtm4wp_cookie_parts.length == 2 ) {
-			gtm4wp_orderid_tracked = gtm4wp_cookie_parts.pop().split(";").shift();
+
+		if ( !window.localStorage ) {
+			var gtm4wp_cookie = "; " + document.cookie;
+			var gtm4wp_cookie_parts = gtm4wp_cookie.split( "; gtm4wp_orderid_tracked=" );
+			if ( gtm4wp_cookie_parts.length == 2 ) {
+				gtm4wp_orderid_tracked = gtm4wp_cookie_parts.pop().split(";").shift();
+			}
+		} else {
+			window.localStorage.getItem( "gtm4wp_orderid_tracked" );
 		}
 
 		// check enhanced ecommerce
@@ -896,10 +905,14 @@ function gtm4wp_wp_header_begin( $echo = true ) {
 		}
 
 		if ( gtm4wp_orderid_tracked ) {
-			var gtm4wp_orderid_cookie_expire = new Date();
-			gtm4wp_orderid_cookie_expire.setTime( gtm4wp_orderid_cookie_expire.getTime() + (365*24*60*60*1000) );
-			var gtm4wp_orderid_cookie_expires = "expires="+ gtm4wp_orderid_cookie_expire.toUTCString();
-			document.cookie = "gtm4wp_orderid_tracked=" + gtm4wp_orderid_tracked + ";" + gtm4wp_orderid_cookie_expire + ";path=/";
+			if ( !window.localStorage ) {
+				var gtm4wp_orderid_cookie_expire = new Date();
+				gtm4wp_orderid_cookie_expire.setTime( gtm4wp_orderid_cookie_expire.getTime() + (365*24*60*60*1000) );
+				var gtm4wp_orderid_cookie_expires_part = "expires=" + gtm4wp_orderid_cookie_expire.toUTCString();
+				document.cookie = "gtm4wp_orderid_tracked=" + gtm4wp_orderid_tracked + ";" + gtm4wp_orderid_cookie_expires_part + ";path=/";
+			} else {
+				window.localStorage.setItem( "gtm4wp_orderid_tracked", gtm4wp_orderid_tracked );
+			}
 		}
 
 	}';
@@ -959,7 +972,7 @@ function gtm4wp_body_class( $classes ) {
 
 	// solution is based on the code of Yaniv Friedensohn
 	// http://www.affectivia.com/blog/placing-the-google-tag-manager-in-wordpress-after-the-body-tag/
-	if ( GTM4WP_PLACEMENT_BODYOPEN_AUTO == $gtm4wp_options[ GTM4WP_OPTION_GTM_PLACEMENT ] ) {
+	if ( ( GTM4WP_PLACEMENT_BODYOPEN_AUTO == $gtm4wp_options[ GTM4WP_OPTION_GTM_PLACEMENT ] ) && ( !isset($_GET["ct_builder"]) ) ) {
 		$classes[] = '">' . gtm4wp_get_the_gtm_tag() . '<br style="display:none;';
 	}
 
@@ -1007,6 +1020,8 @@ add_action( 'body_open', 'gtm4wp_wp_body_open' );
 add_action( 'genesis_before', 'gtm4wp_wp_body_open' ); // Genisis theme
 add_action( 'generate_before_header', 'gtm4wp_wp_body_open', 0 ); // GeneratePress theme
 add_action( 'elementor/page_templates/canvas/before_content', 'gtm4wp_wp_body_open' ); // Elementor
+add_action( 'ct_before_builder', 'gtm4wp_wp_body_open', 0 ); // Oxygen Builder
+add_action( 'fl_before_builder', 'gtm4wp_wp_body_open', 0 ); // Beaver Builder Theme
 
 // standard WP theme support for body open tags
 add_action( 'wp_body_open', 'gtm4wp_wp_body_open' );
