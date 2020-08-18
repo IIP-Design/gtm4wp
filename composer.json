@@ -1,9 +1,9 @@
 {
-    "name": "iip-design/duracelltomi-google-tag-manager",
-    "type": "wordpress-plugin",
-    "description" : "Add multilingual support for Media files",
-    "minimum-stability": "stable",
-    "require": {
-       "composer/installers": "~1.0"
-    }
+  "name": "iip-design/duracelltomi-google-tag-manager",
+  "type": "wordpress-plugin",
+  "description": "Extends the Google Tag Manager plugin",
+  "minimum-stability": "stable",
+  "require": {
+    "composer/installers": "~1.0"
+  }
 }

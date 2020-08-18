@@ -19,6 +19,7 @@ define( 'GTM4WP_OPTION_INCLUDE_VISITOR_IP', 'include-visitor-ip' );
 define( 'GTM4WP_OPTION_INCLUDE_POSTTYPE', 'include-posttype' );
 define( 'GTM4WP_OPTION_INCLUDE_CATEGORIES', 'include-categories' );
 define( 'GTM4WP_OPTION_INCLUDE_TAGS', 'include-tags' );
+define( 'GTM4WP_OPTION_INCLUDE_CUSTOM_TAX', 'include-cust-tax' );
 define( 'GTM4WP_OPTION_INCLUDE_AUTHORID', 'include-authorid' );
 define( 'GTM4WP_OPTION_INCLUDE_AUTHOR', 'include-author' );
 define( 'GTM4WP_OPTION_INCLUDE_POSTDATE', 'include-postdate' );
@@ -149,7 +150,8 @@ $gtm4wp_defaultoptions = array(
 	GTM4WP_OPTION_INCLUDE_VISITOR_IP              => false,
 	GTM4WP_OPTION_INCLUDE_POSTTYPE                => true,
 	GTM4WP_OPTION_INCLUDE_CATEGORIES              => true,
-	GTM4WP_OPTION_INCLUDE_TAGS                    => true,
+  GTM4WP_OPTION_INCLUDE_TAGS                    => true,
+  GTM4WP_OPTION_INCLUDE_CUSTOM_TAX              => true,
 	GTM4WP_OPTION_INCLUDE_AUTHOR                  => true,
 	GTM4WP_OPTION_INCLUDE_AUTHORID                => false,
 	GTM4WP_OPTION_INCLUDE_POSTDATE                => false,
